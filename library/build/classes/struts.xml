@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+    <package name="default" namespace="/" extends="struts-default">
+       	<default-action-ref name="homepage"></default-action-ref>
+    
+    	<action name="homepage">
+    		<result>/WEB-INF/content/home.jsp</result>
+    	</action>
+    	<action name="JSJKX" class="action.BookAction" method="allbooks_JSJKX">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="AQL" class="action.BookAction" method="allbooks_AQL">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="CXSJ" class="action.BookAction" method="allbooks_CXSJ">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="WFL" class="action.BookAction" method="allbooks_WFL">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="DXWL" class="action.BookAction" method="allbooks_DXWL">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="DL" class="action.BookAction" method="allbooks_DL">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="GS" class="action.BookAction" method="allbooks_GS">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="XS" class="action.BookAction" method="allbooks_XS">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="LSSX" class="action.BookAction" method="allbooks_LSSX">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="JSDS" class="action.BookAction" method="allbooks_JSDS">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="SLLJ" class="action.BookAction" method="allbooks_SLLJ">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="MSSB" class="action.BookAction" method="allbooks_MSSB">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="WEB" class="action.BookAction" method="allbooks_WEB">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="ZZ" class="action.BookAction" method="allbooks_ZZ">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="SearchBook" class="action.BookAction" method="searchbook" >
+    		<result name="success">/WEB-INF/content/searchbooks.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 下载 -->
+    	<action name="downloadtest" class="action.FileDownAction" method="execute">
+    		<result type="stream">
+    		<param name="inputName">fileInputStream</param>
+    		<param name="contentDisposition">attachment; filename="${fileName}"</param>
+    		<param name="contentType">application/octet-stream</param>
+    		<param name="bufferSize">1024</param>
+    		
+    		</result>
+    	</action>
+    	<!-- 动态加载ACTION -->
+    	<action name="FK" class="action.BookAction" method="FK">
+    		<result>/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<action name="download" class="action.BookAction" method="download">
+    		<result>/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<action name="getsize" class="action.BookAction" method="getsize">
+    		<result>/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    </package>
+
+    <!-- Add packages here -->
+
+</struts>
