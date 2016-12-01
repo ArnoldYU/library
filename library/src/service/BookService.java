@@ -29,8 +29,8 @@ public class BookService {
 		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/bookdownload?characterEncoding=utf8";
 	    String username = "root";
-	    String password = "";
-	    //String password = "501874997";
+	   // String password = "";
+	    String password = "501874997";
 	    Connection conn = null;
 	    try {
 	        Class.forName(driver); //classLoader,加载对应驱动
@@ -149,6 +149,10 @@ public class BookService {
 		String type="LSSX";
 		return allbooks(type);
 	}
+	public List<domin.books> DZYDLGJGKZ() {
+		String type="DZYDLGJGKZ";
+		return allbooks(type);
+	}
 	public List<books> allbooks(String type) {
 		// TODO Auto-generated method stub
 		List<books> typebooks;
@@ -231,5 +235,10 @@ public class BookService {
 	    	System.out.println("file doesn't exist or is not a file");  
 	    }  
 	}
+	public List<domin.books> BYHZG() {
+		String type="BYHZG";
+		return allbooks(type);
+	}
+	
 	
 }

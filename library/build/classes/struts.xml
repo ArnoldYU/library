@@ -57,6 +57,12 @@
     	<action name="ZZ" class="action.BookAction" method="allbooks_ZZ">
     		<result>/WEB-INF/content/allbooks.jsp</result>
     	</action>
+    	<action name="DZYDLGJGKZ" class="action.BookAction" method="allbooks_DZYDLGJGKZ">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
+    	<action name="BYHZG" class="action.BookAction" method="allbooks_BYHZG">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
     	<action name="SearchBook" class="action.BookAction" method="searchbook" >
     		<result name="success">/WEB-INF/content/searchbooks.jsp</result>
     		<result name="error">/WEB-INF/content/error.jsp</result>
