@@ -23,13 +23,14 @@
 
 		<header class="primary">
 			<span class="open icon">&#9776;</span>
-			<hgroup><h1>工大电子书下载</h1></hgroup>
+			<hgroup><h1>电子书下载</h1></hgroup>
 		</header>
 		<section id="scroller" class="overflow">
 			<div id="content">
 				<header class="htmleaf-header">	
 					<p>本站点免费提供电子书下载</p>
 					<p>若侵犯您的版权，请联系站长2680828469@qq.com</p>
+					<P>建议在WiFi的环境下下载</P>
 					<p>技术有限,有bug的地方请及时联系站长</p>
 					<p>后续开发进行中...ㄟ(▔▽▔)ㄏ</p>
 					<!-- <h1>通过servlet程序下载文件</h1>

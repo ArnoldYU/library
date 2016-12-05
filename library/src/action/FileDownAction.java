@@ -23,20 +23,17 @@ public class FileDownAction {
 
 	public String execute(){
 		fileName = BookService.validateBook(id);
-//		File file = new File("/Users/Arnold/Documents/橘子学长的家当/"+fileName);
 		File file = new File("/usr/local/tomcat/books/"+fileName);
-//		fileName=file.getName();
+//		File file = new File("/Users/Arnold/Desktop/lalala");
 		System.out.println(fileName);
 		try {
 			fileName=new String( fileName.getBytes("gb2312"), "ISO8859-1" );
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			fileInputStream = new FileInputStream(file);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "success";

@@ -44,18 +44,32 @@ public class BookService {
 	}
 	public static String validateBook(String id) {
 		String searchbook = null;
+		int number=0;
 	    Connection conn = getConn();
 	    String sql = "SELECT * FROM  `books`";
+	    String sql1 = "update books set number="+number+" where id="+id;
+	    System.out.println(number);
 	    PreparedStatement pstmt;
+	    PreparedStatement pstmt1;
+//	    System.out.println(sql1);
 	    try {
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
 	        while(rs.next()){
 	        	if(rs.getString(1).equals(id)){
 	        		searchbook = rs.getString(2);
+	        		number=rs.getInt(6);
+	        		number++;
+	        		
+	        		break;
 	        	}
 	        }
 	        pstmt.close();
+	        sql1 = "update books set number="+number+" where id="+id;
+	        System.out.println(sql1);
+	        pstmt1 = (PreparedStatement)conn.prepareStatement(sql1);
+	        pstmt1.executeUpdate();
+	        pstmt1.close();
 	        return searchbook;
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -67,12 +81,6 @@ public class BookService {
 		searchbooks = new ArrayList<books>();
 	    Connection conn = getConn();
 	    String name=book.getName();
-//	    try {
-//			name = new String(name.getBytes("GB2312"), "ISO8859-1" );
-//		} catch (UnsupportedEncodingException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
 	    String sql = "select * from books where name like '%"+name+"%'";
 	    System.out.println(sql);
 	    PreparedStatement pstmt;
@@ -81,10 +89,7 @@ public class BookService {
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
 	        while(rs.next()){
-//	        	if(rs.getString(2).equals(book.getName())){
 	        	searchbooks.add(new books(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getBoolean(4),rs.getString(5)));
-//	        	}
-	        		
 	        }
 	        pstmt.close();
 	        return searchbooks;
@@ -237,6 +242,10 @@ public class BookService {
 	}
 	public List<domin.books> BYHZG() {
 		String type="BYHZG";
+		return allbooks(type);
+	}
+	public List<domin.books> KWWFL() {
+		String type="KWWFL";
 		return allbooks(type);
 	}
 	

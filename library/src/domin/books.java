@@ -7,7 +7,15 @@ public class books {
 	private String download;
 	private boolean valid;
 	private String type;
+	private int number;
 	
+	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	public int getId() {
 		return id;
 	}

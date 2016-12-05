@@ -63,6 +63,9 @@
     	<action name="BYHZG" class="action.BookAction" method="allbooks_BYHZG">
     		<result>/WEB-INF/content/allbooks.jsp</result>
     	</action>
+    	<action name="KWWFL" class="action.BookAction" method="allbooks_KWWFL">
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
     	<action name="SearchBook" class="action.BookAction" method="searchbook" >
     		<result name="success">/WEB-INF/content/searchbooks.jsp</result>
     		<result name="error">/WEB-INF/content/error.jsp</result>

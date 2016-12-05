@@ -137,6 +137,11 @@ public class BookAction implements Action {
 		setBooks(mybook.BYHZG());
 		return SUCCESS;
 	}
+	public String allbooks_KWWFL() {
+		BookService mybook = new BookService();
+		setBooks(mybook.KWWFL());
+		return SUCCESS;
+	}
 	//ajax
 	public String FK(){
 		BookService mybook = new BookService();
