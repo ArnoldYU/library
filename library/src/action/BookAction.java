@@ -13,8 +13,14 @@ public class BookAction implements Action {
 	public books onebook;
 	public String id;
 	public String url;
+	public String information;
 	
-	
+	public String getInformation() {
+		return information;
+	}
+	public void setInformation(String information) {
+		this.information = information;
+	}
 	public String getUrl() {
 		return url;
 	}
@@ -145,7 +151,7 @@ public class BookAction implements Action {
 	//ajax
 	public String FK(){
 		BookService mybook = new BookService();
-		mybook.FKset(id);
+		mybook.FKset(id,information);
 		return SUCCESS;
 	}
 	public String download(){

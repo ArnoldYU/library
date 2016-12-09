@@ -22,10 +22,27 @@ public class BookService {
 	private int port = 21;
 	private String username = "ftpuser";
 	private String password = "arnold-huang-123";
-	private String pathname = "/usr/local/tomcat/books"; 
+	private String pathname = "/usr/local/tomcat/books";
 	private String localdocument=null;
 	/* 加载数据库*/
 	private static Connection getConn() {
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/bookdownload?characterEncoding=utf8";
+	    String username = "root";
+	   // String password = "";
+	    String password = "501874997";
+	    Connection conn = null;
+	    try {
+	        Class.forName(driver); //classLoader,加载对应驱动
+	        conn = (Connection) DriverManager.getConnection(url, username, password);
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return conn;
+	}
+	private static Connection getConninformation() {
 		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/bookdownload?characterEncoding=utf8";
 	    String username = "root";
@@ -47,6 +64,7 @@ public class BookService {
 		int number=0;
 	    Connection conn = getConn();
 	    String sql = "SELECT * FROM  `books`";
+
 	    String sql1 = "update books set number="+number+" where id="+id;
 	    System.out.println(number);
 	    PreparedStatement pstmt;
@@ -60,7 +78,7 @@ public class BookService {
 	        		searchbook = rs.getString(2);
 	        		number=rs.getInt(6);
 	        		number++;
-	        		
+
 	        		break;
 	        	}
 	        }
@@ -167,7 +185,7 @@ public class BookService {
 	    typebooks.clear();
 	    PreparedStatement pstmt;
 	    try {
-	    	
+
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
 	        while(rs.next()){
@@ -181,10 +199,14 @@ public class BookService {
 	    }
 	    return null;
 	}
-	public void FKset(String id) {
+	public void FKset(String id, String information) {
+		int b = 0;
 		// TODO Auto-generated method stub
+		//反馈信息存为一个新的数据库，数据库只有id：反馈的编码；bookid：出现问题的book的id；information：反馈消息 数据表名称：bookdownloadinformation
 		Connection conn = getConn();
+//		COnnection conn1 = getConninformation();
 	    String sql = "update books set valid = 0 where id='" + id + "'";
+	    String sql1 = "insert into bookdownloadinformation (bookid,information) values (?,?)";
 	    PreparedStatement pstmt;
 	    try {
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -194,6 +216,20 @@ public class BookService {
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+		try {
+			pstmt = (PreparedStatement) conn.prepareStatement(sql1);
+			try {
+			    b = Integer.valueOf(id).intValue();
+			} catch (NumberFormatException e) {
+			    e.printStackTrace();
+			}
+			pstmt.setInt(1,b);
+			pstmt.setString(2, information);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	@SuppressWarnings("static-access")
 	public void download(String id, String url) {
@@ -203,10 +239,10 @@ public class BookService {
 	    String sql = "select * from books";
 	    PreparedStatement pstmt;
 	    String myid;
-	    String filename = null; 
+	    String filename = null;
 	    String localpath = url;
 	    System.out.println(localpath);
-	    
+
 //	    String originfilename = "/Users/Arnold/Documents/1.py";
 	    try {
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -218,7 +254,7 @@ public class BookService {
 	        		break;
 	        	}
 	        }
-//	        filename = "OpenGL游戏编程.pdf"; 
+//	        filename = "OpenGL游戏编程.pdf";
 	        localdocument = localpath+"/"+filename;
 	        System.out.println(filename);
 	        //favFTP.uploadFileFromProduction(hostname, port, username, password, pathname, "2.py", originfilename);
@@ -233,12 +269,12 @@ public class BookService {
 		FileInputStream fis= null;
 		localdocument="/Users/Arnold/Desktop/UNIX环境高级编程(第二版).pdf";
 		System.out.println(localdocument);
-		File f= new File(localdocument);  
-	    if (f.exists() && f.isFile()){  
-	    	System.out.println(f.length());  
-	    }else{  
-	    	System.out.println("file doesn't exist or is not a file");  
-	    }  
+		File f= new File(localdocument);
+	    if (f.exists() && f.isFile()){
+	    	System.out.println(f.length());
+	    }else{
+	    	System.out.println("file doesn't exist or is not a file");
+	    }
 	}
 	public List<domin.books> BYHZG() {
 		String type="BYHZG";
@@ -248,6 +284,6 @@ public class BookService {
 		String type="KWWFL";
 		return allbooks(type);
 	}
-	
-	
+
+
 }
