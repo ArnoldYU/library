@@ -83,26 +83,18 @@
 	}
 	function fankui(btn){
 		id=btn.name
-		/* alert(id) */
-        var information = prompt("请输入反馈信息", ""); //将输入的内容赋给变量 name ，  
-        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值  
-        if (information)//如果返回的有内容  
-        {  
-            alert("谢谢您的反馈");  
-        }  
-
+		alert(id)
 	   	$.ajax({
 	   		url:"FK.action",
 	   		type:"POST",
 	   		data:{
-	   			id:id,
-	   			information:information,
+	   			id:id
 	   		},
 	   		error:function(){
 	   			alert("error");
 	   		},
 	   		success:function(){
-	   			alert("反馈成功")
+	   			alert("反馈成功");
 	   		}
 	   	});
 	}

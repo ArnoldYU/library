@@ -66,6 +66,9 @@
     	<action name="KWWFL" class="action.BookAction" method="allbooks_KWWFL">
     		<result>/WEB-INF/content/allbooks.jsp</result>
     	</action>
+    	<action name="SXJM" class="action.BookAction" method="allbooks_SXJM">  
+    		<result>/WEB-INF/content/allbooks.jsp</result>
+    	</action>
     	<action name="SearchBook" class="action.BookAction" method="searchbook" >
     		<result name="success">/WEB-INF/content/searchbooks.jsp</result>
     		<result name="error">/WEB-INF/content/error.jsp</result>
@@ -78,9 +81,11 @@
     		<param name="contentDisposition">attachment; filename="${fileName}"</param>
     		<param name="contentType">application/octet-stream</param>
     		<param name="bufferSize">1024</param>
-    		
     		</result>
     	</action>
+    	
+    	<!-- 上传 -->
+    	
     	<!-- 动态加载ACTION -->
     	<action name="FK" class="action.BookAction" method="FK">
     		<result>/WEB-INF/content/error.jsp</result>

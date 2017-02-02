@@ -11,6 +11,7 @@
 	<ul id="accordion" class="accordion">
 		<li><a href="#">你们好啊</a>
 		<li><a href="homepage">首页</a></li>
+		<li><a href="upload">上传电子资料</a></li>
 		<li>
 			<a href=javascript:TJ()>推荐链接</a>
 			<ul style="display:none" id="TJ">
@@ -25,6 +26,7 @@
 				<li><a href="LSSX">&nbsp 离散数学</a></li>
 				<li><a href="JSDS">&nbsp 近世代数</a></li>
 				<li><a href="SLLJ">&nbsp 数理逻辑</a></li>
+				<li><a href="SXJM">&nbsp 数学建模-美赛参考资料</a>
 			</ul>
 		</li>
 		<li>
