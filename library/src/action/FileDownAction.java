@@ -38,7 +38,6 @@ public class FileDownAction {
 		}
 		return "success";
 	}
-
 	public InputStream getFileInputStream() {
 		return fileInputStream;
 	}
@@ -55,4 +54,9 @@ public class FileDownAction {
 		this.fileName = fileName;
 	}
 	
+	public String upload() {
+
+		System.out.println(fileName);
+		return "success";
+	}
 }

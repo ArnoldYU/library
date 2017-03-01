@@ -1,0 +1,17 @@
+.upload{
+	position:absolute;
+	right:10px;
+	height:100px;
+	right: 50%;
+	margin-right:-191px;
+	top:30%;
+}
+.upload-file{
+	position:relative;
+}
+.upload-submit{
+	position:relative;
+}
+.upload-form{
+	position:relative;
+}

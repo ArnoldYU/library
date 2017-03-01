@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
+	<constant name="struts.multipart.maxSize" value="1000000000" />
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
@@ -85,7 +85,12 @@
     	</action>
     	
     	<!-- 上传 -->
-    	
+    	<action name="upload">
+    		<result>/WEB-INF/content/upload.jsp</result>
+    	</action>
+    	<action name="file-upload" class="action.UpLoadAction" method="Up">
+    		<result>/WEB-INF/content/uploadsuccess.jsp</result>
+    	</action>
     	<!-- 动态加载ACTION -->
     	<action name="FK" class="action.BookAction" method="FK">
     		<result>/WEB-INF/content/error.jsp</result>
