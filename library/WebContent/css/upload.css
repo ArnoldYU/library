@@ -1,16 +1,18 @@
-.upload{
-	position:absolute;
-	right:10px;
-	height:100px;
-	right: 50%;
-	margin-right:-191px;
-	top:30%;
+.upload {
+    position: absolute;
+    height: 100px;
+    left: 50%;
+    margin-left: -187.5px;
+}
+@media (max-width: 767px)  {
+	.upload{ margin-right:0px;right:0px;}
 }
 .upload-file{
 	position:relative;
 }
 .upload-submit{
 	position:relative;
+	left:-14px;
 }
 .upload-form{
 	position:relative;
